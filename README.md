@@ -71,3 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Trello Board link for our group:
 https://trello.com/b/zUSyUuJU/youtube-project
+
+Members: Lakisha T., Meera R., Derek P.
+
+Netlify link: https://dlm-youtube.netlify.app

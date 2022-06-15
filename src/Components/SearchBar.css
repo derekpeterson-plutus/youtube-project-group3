@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem;
+}
+button {
+  background: red;
+  color: white;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.searchMessage {
+  margin: 0 auto;
+  text-align: center;
+  background-color: darkgrey;
+  width: 40rem;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+}

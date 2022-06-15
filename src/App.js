@@ -1,8 +1,13 @@
 import React from 'react';
 import './App.css';
-import NavBar from './Components/NavBar.js'
-import About from './Components/About.js'
+
+import NavBar from './Components/NavBar.js';
+import About from './Components/About.js';
+import SearchBar from './Components/SearchBar.js';
+import Page404NotFound from './Components/Page404NotFound.js';
+
 import Home from './Components/Home.js'
+
 import { Routes, Route } from 'react-router-dom';
 
 class App extends React.Component {
@@ -37,6 +42,7 @@ class App extends React.Component {
   return (
 
     <div className='App'>
+
       <title>YouTube App</title>
       <h1>YouTube</h1>
       {this.fetchData(" ") }
@@ -53,10 +59,11 @@ class App extends React.Component {
         </main>
       }
     />
+
         </Routes>
       </header>
     </div>
   );
 }
-}
+
 export default App;

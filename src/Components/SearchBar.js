@@ -3,11 +3,12 @@ import { React, Component } from 'react';
 // import { Link} from "react-router-dom";
 import './SearchBar.css';
 import VideoList from './VideoList.js';
+
 class SearchBar extends Component {
 
  
   render() {
-    const { fetchData ,isError, videos, handleSubmit, handleChange ,searchTerm,} = this.props;
+    const { isError, videos, handleSubmit, handleChange ,searchTerm,} = this.props;
     
     if (isError) {
       return (
@@ -16,7 +17,7 @@ class SearchBar extends Component {
     }
     return (
       <div className='container'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <label>
             <div className='wrapper'>
               <input
@@ -29,9 +30,7 @@ class SearchBar extends Component {
                 value={searchTerm}
               />
               <button
-                onClick={() => {
-                  fetchData(searchTerm);
-                }}
+               className='buttons' type='submit'
               >
                 Search
               </button>

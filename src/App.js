@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import NavBar from './Components/NavBar.js'
-import About from './Components/About.js'
-import Home from './Components/Home.js'
+import NavBar from './Components/NavBar.js';
+import About from './Components/About.js';
+import Home from './Components/Home.js';
+import SearchBar from './Components/SearchBar';
 import { Routes, Route } from 'react-router-dom';
 
 class App extends React.Component {
@@ -10,9 +11,15 @@ class App extends React.Component {
    super();
    this.state = {
      video: [],
+     searchTerm: "",
    };
  } 
+ handleChange = (e) => {
+   this.setState({
+     [e.target.name]: e.target.value,
+   });
 
+ }
  fetchData = (inp)=> {
    fetch(
     `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&q=${inp}&type=video&key=${process.env.REACT_APP_API_KEY}`
@@ -23,13 +30,22 @@ class App extends React.Component {
     .then((data) => {
       console.log(data);
       this.setState({
-        video: data.items,
+        videos: data.items,
       });
     })
    
 }
 
-
+handleSubmit = (e) => {
+  e.preventDefault();
+  const {searchTerm} = this.state;
+  if (searchTerm) {
+    this.fetchData(searchTerm);
+    this.setState({
+      searchTerm: "",
+    });
+  }
+}
 
 
     render (){
@@ -38,22 +54,35 @@ class App extends React.Component {
 
     <div className='App'>
       <title>YouTube App</title>
-      <h1>YouTube</h1>
-      {this.fetchData(" ") }
+          <h1>YouTube</h1>
+  
       <header className='App-header'>
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route
-            path="*"
-              element={
-              <main style={{ padding: "1rem" }}>
-               <p>404 PageThere's nothing here!</p>
-        </main>
-      }
-    />
-        </Routes>
+      
+         <NavBar />
+         <Routes>
+            <Route path='home' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route
+              path="/"
+               element={
+               <SearchBar
+                  searchTerm={this.state.searchTerm}
+                  handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                 videos={this.state.video}
+               />
+             }
+            />
+            <Route
+              path="*"
+               element={
+                <main style={{ padding: "1rem" }}>
+                   <p>404 PageThere's nothing here!</p>
+                </main>
+               }   
+           />
+          </Routes>
+      
       </header>
     </div>
   );

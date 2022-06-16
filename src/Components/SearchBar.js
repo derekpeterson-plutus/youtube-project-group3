@@ -4,11 +4,16 @@ import { React, Component } from 'react';
 import './SearchBar.css';
 import VideoList from './VideoList.js';
 class SearchBar extends Component {
-
- 
   render() {
-    const { fetchData ,isError, videos, handleSubmit, handleChange ,searchTerm,} = this.props;
-    
+    const {
+      fetchData,
+      isError,
+      videos,
+      handleSubmit,
+      handleChange,
+      searchTerm,
+    } = this.props;
+
     if (isError) {
       return (
         <div style={{ color: 'red', fontSize: 100 }}>No Results found!</div>
@@ -38,12 +43,10 @@ class SearchBar extends Component {
             </div>
           </label>
         </form>
-        <VideoList videos={videos}/>
+        <VideoList videos={videos} />
       </div>
     );
   }
 }
 
 export default SearchBar;
-
-

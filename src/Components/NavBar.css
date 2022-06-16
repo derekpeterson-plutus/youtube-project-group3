@@ -11,7 +11,7 @@
   
   .logo {
     padding: 0;
-    margin: 0;
+    margin: 1rem 4rem;
   }
   
   ul {
@@ -21,7 +21,7 @@
   }
   
   ul li {
-    padding: 0 1rem;
+    padding: 1rem 4rem;
   }
   ul li a {
     text-decoration: none;

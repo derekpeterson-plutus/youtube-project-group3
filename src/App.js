@@ -48,44 +48,39 @@ handleSubmit = (e) => {
 }
 
 
-    render (){
-    
-  return (
-
-    <div className='App'>
-      <title>YouTube App</title>
-          <h1>YouTube</h1>
-  
-      <header className='App-header'>
-      
-         <NavBar />
-         <Routes>
-            <Route path='home' element={<Home />} />
+  render() {
+    return (
+      <div className='App'>
+        <title>YouTube App</title>
+        {this.fetchData(' ')}
+        <header className='App-header'>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route
               path="/"
-               element={
-               <SearchBar
-                  searchTerm={this.state.searchTerm}
-                  handleChange={this.handleChange}
-                  handleSubmit={this.handleSubmit}
-                 videos={this.state.video}
-               />
-             }
+              element={
+                <SearchBar
+                   searchTerm={this.state.searchTerm}
+                   handleChange={this.handleChange}
+                   handleSubmit={this.handleSubmit}
+                   videos={this.state.videos}
+                />
+              }
             />
             <Route
-              path="*"
-               element={
-                <main style={{ padding: "1rem" }}>
-                   <p>404 PageThere's nothing here!</p>
+              path='*'
+              element={
+                <main style={{ padding: '1rem' }}>
+                  <p>404 Page There's nothing here!</p>
                 </main>
-               }   
-           />
+              }
+            />
           </Routes>
-      
-      </header>
-    </div>
-  );
-}
+        </header>
+      </div>
+    );
+  }
 }
 export default App;

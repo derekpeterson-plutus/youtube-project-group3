@@ -5,8 +5,6 @@ import './SearchBar.css';
 import VideoList from './VideoList.js';
 
 class SearchBar extends Component {
-
- 
   render() {
     const { isError, videos, handleSubmit, handleChange ,searchTerm,} = this.props;
     
@@ -37,12 +35,10 @@ class SearchBar extends Component {
             </div>
           </label>
         </form>
-        <VideoList videos={videos}/>
+        <VideoList videos={videos} />
       </div>
     );
   }
 }
 
 export default SearchBar;
-
-

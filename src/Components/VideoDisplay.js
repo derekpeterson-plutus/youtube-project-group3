@@ -1,7 +1,7 @@
 import YouTube from 'react-youtube';
 import React, { Component } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import CommentSection from './CommentSection.js';
+import CommentSection from './comments/CommentSection.js';
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -13,17 +13,20 @@ class VideoDisplay extends Component {
   };
 
   render() {
-    const { videoId } = this.props.params;
+    const { id } = this.props.params;
+
     return (
       <div>
         <section>
-          <YouTube videoId={videoId} onReady={this.VideoPlay} />
-          <Link className='new-search-btn-link' to='/'>
-            Search New Videos
-          </Link>
+          <YouTube videoId={id} onReady={this.VideoPlay} />
+          <div>
+            <Link className='new-search-btn-link' to='/'>
+              Search New Videos
+            </Link>
+          </div>
         </section>
         <section>
-          <CommentSection videoId={videoId} />
+          <CommentSection />
         </section>
       </div>
     );

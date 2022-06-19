@@ -1,12 +1,104 @@
-import { React,Component } from 'react';
-
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './SearchBar.css';
+import VideoList from './VideoList.js';
+import SearchBar from './SearchBar.js';
+import { Html5Entities } from 'html-entities';
 class Home extends Component {
-    render() {
-    
-    return(
-        <div>Home Page</div>
-     )
-    }
-}
+  constructor() {
+    super();
+    this.state = {
+      searchedVideos: [],
+      searchInput: '',
+    };
+  }
 
+  fetchData = (input) => {
+    fetch(
+      `https:youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${input}&key=${process.env.REACT_APP_API_KEY}`
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          searchedVideos: [...data.items],
+        });
+      })
+      .then((err) => {
+        console.log(err);
+      });
+  };
+
+  handleChange = (event) => {
+    event.preventDefault();
+    this.setState({ searchInput: event.target.value });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('searchInput', this.state.searchInput);
+    if (this.state.searchInput) {
+      this.fetchData(this.state.searchInput);
+      this.setState({ searchInput: '' });
+    }
+  };
+
+  render() {
+    const { searchedVideos } = this.state;
+    let results = searchedVideos.map((video) => {
+      return (
+        <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
+          <h4>{video.snippet.title}</h4>
+          <img
+            src={video.snippet.thumbnails.medium.url}
+            alt={video.snippet.title}
+          />
+          <h4>{video.snippet.description}</h4>
+          <div>
+            <h4>{video.snippet.regionCode}</h4>
+            <h4>
+              Uploaded on:{' '}
+              {video.snippet.publishTime
+                ? video.snippet.publishTime.slice(0, 10)
+                : null}
+            </h4>
+            <img
+              src={video.snippet.thumbnails.default.url}
+              alt={video.snippet.description}
+            />
+          </div>
+        </Link>
+      );
+    });
+    return (
+      <div className='container'>
+        <SearchBar
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          searchInput={this.state.searchInput}
+        />
+        {!searchedVideos.length ? (
+          <h4
+            style={{
+              color: 'white',
+              fontSize: 20,
+              textAlign: 'center',
+              background: 'grey',
+              width: '40rem',
+              padding: '1rem',
+              margin: '0 auto',
+            }}
+          >
+            No Search Results Yet! Please submit a search above
+          </h4>
+        ) : (
+          ''
+        )}
+        {results}
+        {/* <VideoList searchedVideos={searchedVideos} /> */}
+      </div>
+    );
+  }
+}
 export default Home;

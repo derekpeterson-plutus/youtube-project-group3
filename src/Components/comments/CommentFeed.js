@@ -4,8 +4,8 @@ class CommentFeed extends Component {
     const commentedMessage = this.props.commentsList.map((comment, index) => {
       return (
         <div key={index}>
-          <h4>{comment.commentorName}</h4>
-          <p>{comment.userComments}</p>
+          <h4>Name: {comment.commentorName}</h4>
+          <p>Comments: {comment.userComments}</p>
         </div>
       );
     });

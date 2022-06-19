@@ -32,11 +32,11 @@ class CommentSection extends Component {
   }
   render() {
     const { commentsList } = this.state;
-    const { videoId } = this.props;
+
     return (
       <div>
         <CommentForm addComments={this.addComments} />
-        <CommentFeed commentsList={commentsList} videoId={videoId} />
+        <CommentFeed commentsList={commentsList} />
       </div>
     );
   }

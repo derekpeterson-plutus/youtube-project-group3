@@ -13,17 +13,17 @@ class VideoDisplay extends Component {
   };
 
   render() {
-    const { videoId } = this.props.params;
+    const { id } = this.props.params;
     return (
       <div>
         <section>
-          <YouTube videoId={videoId} onReady={this.VideoPlay} />
+          <YouTube videoId={id} onReady={this.VideoPlay} />
           <Link className='new-search-btn-link' to='/'>
             Search New Videos
           </Link>
         </section>
         <section>
-          <CommentSection videoId={videoId} />
+          <CommentSection />
         </section>
       </div>
     );

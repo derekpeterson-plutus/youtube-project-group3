@@ -1,25 +1,24 @@
 import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
-// import { Html5Entities } from 'html-entities';
+import { decode } from 'html-entities';
 
 class VideoList extends Component {
   render() {
     const { searchedVideos } = this.props;
-    // const entities = new Html5Entities();
 
     let results = searchedVideos.map((video) => {
       return (
         <div>
           <Link to={`/videos/${video.id.videoId}`}>
-            <h4>{video.snippet.title}</h4>
+            <h4>Title: {decode(video.snippet.title)}</h4>
             <img
               src={video.snippet.thumbnails.medium.url}
-              alt={video.snippet.title}
+              alt={decode(video.snippet.title)}
             />
           </Link>
-          <h4>{video.snippet.description}</h4>
+          <h4>Description: {decode(video.snippet.description)}</h4>
           <div>
-            <h4>{video.snippet.regionCode}</h4>
+            <h4>RegionCode: {video.snippet.regionCode}</h4>
             <h4>
               Uploaded on:{' '}
               {video.snippet.publishTime

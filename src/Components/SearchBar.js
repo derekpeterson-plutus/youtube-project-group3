@@ -1,41 +1,31 @@
 import { React, Component } from 'react';
-//import axios from "axios";
-// import { Link} from "react-router-dom";
 import './SearchBar.css';
-import VideoList from './VideoList.js';
 
 class SearchBar extends Component {
   render() {
-    const { isError, videos, handleSubmit, handleChange ,searchTerm,} = this.props;
-    
-    if (isError) {
-      return (
-        <div style={{ color: 'red', fontSize: 100 }}>No Results found!</div>
-      );
-    }
+    const { searchInput, handleChange, handleSubmit } = this.props;
     return (
       <div className='container'>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(event) => handleSubmit(event)}>
           <label>
             <div className='wrapper'>
               <input
                 type='text'
                 id='searchbar'
                 placeholder='Search here'
-                name='searchTerm'
-                size='90'
+                style={{
+                  maxWidth: '90rem',
+                  width: '100%',
+                }}
+                size='50'
+                name='searchbar'
+                value={searchInput}
                 onChange={handleChange}
-                value={searchTerm}
               />
-              <button
-               className='buttons' type='submit'
-              >
-                Search
-              </button>
+              <button>Search</button>
             </div>
           </label>
         </form>
-        <VideoList videos={videos} />
       </div>
     );
   }

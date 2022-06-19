@@ -18,7 +18,6 @@ class App extends React.Component {
    this.setState({
      [e.target.name]: e.target.value,
    });
-
  }
  componentDidMount() {
     fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=type=video&key=${process.env.REACT_APP_API_KEY}`
@@ -27,21 +26,6 @@ class App extends React.Component {
         .then(data => this.setState({ data }));
     }
 
-//  fetchData = (inp)=> {
-//    fetch(
-//     `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${inp}&type=video&key=${process.env.REACT_APP_API_KEY}`
-//   )
-//   .then((res) =>{
-//       return res.json();
-//     })
-//     .then((data) => {
-//       //console.log(data);
-//       this.setState({
-//         videos: data.items,
-//       });
-//     })
-   
-// }
 
 handleSubmit = (e) => {
   e.preventDefault();
@@ -59,7 +43,7 @@ handleSubmit = (e) => {
     return (
       <div className='App'>
         <title>YouTube App</title>
-        
+
         <header className='App-header'>
           <NavBar />
           <Routes>

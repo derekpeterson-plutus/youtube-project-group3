@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './SearchBar.css';
-import VideoList from './VideoList.js';
+
 import SearchBar from './SearchBar.js';
-import { Html5Entities } from 'html-entities';
+import { decode } from 'html-entities';
 class Home extends Component {
   constructor() {
     super();
@@ -48,27 +48,25 @@ class Home extends Component {
     const { searchedVideos } = this.state;
     let results = searchedVideos.map((video) => {
       return (
-        <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
-          <h4>{video.snippet.title}</h4>
-          <img
-            src={video.snippet.thumbnails.medium.url}
-            alt={video.snippet.title}
-          />
-          <h4>{video.snippet.description}</h4>
+        <div>
+          <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
+            <h4>Title: {decode(video.snippet.title)}</h4>
+            <img
+              src={video.snippet.thumbnails.medium.url}
+              alt={decode(video.snippet.title)}
+            />
+          </Link>
+          <h4>Description: {decode(video.snippet.description)}</h4>
           <div>
-            <h4>{video.snippet.regionCode}</h4>
+            <h4>RegionCode: {video.snippet.regionCode}</h4>
             <h4>
               Uploaded on:{' '}
               {video.snippet.publishTime
                 ? video.snippet.publishTime.slice(0, 10)
                 : null}
             </h4>
-            <img
-              src={video.snippet.thumbnails.default.url}
-              alt={video.snippet.description}
-            />
           </div>
-        </Link>
+        </div>
       );
     });
     return (

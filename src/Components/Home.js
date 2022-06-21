@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './SearchBar.css';
-
+import './Home.css'
 import SearchBar from './SearchBar.js';
 import { decode } from 'html-entities';
+
 class Home extends Component {
   constructor() {
     super();
@@ -15,7 +16,7 @@ class Home extends Component {
 
   fetchData = (input) => {
     fetch(
-      `https:youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${input}&key=${process.env.REACT_APP_API_KEY}`
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=9&q=${input}&key=${process.env.REACT_APP_API_KEY}`
     )
       .then((res) => {
         return res.json();
@@ -47,18 +48,20 @@ class Home extends Component {
   render() {
     const { searchedVideos } = this.state;
     let results = searchedVideos.map((video) => {
+      // < key={video.id.videoId} video={video} />
+    
       return (
-        <div>
-          <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
+        <div className='home-video' >
+          <Link to={`/videos/${video.id.videoId}`} >
             <h4>Title: {decode(video.snippet.title)}</h4>
             <img
               src={video.snippet.thumbnails.medium.url}
               alt={decode(video.snippet.title)}
             />
           </Link>
-          <h4>Description: {decode(video.snippet.description)}</h4>
+          {/* <h4>Description: {decode(video.snippet.description)}</h4> */}
           <div>
-            <h4>RegionCode: {video.snippet.regionCode}</h4>
+            {/* <h4>RegionCode: {video.snippet.regionCode}</h4> */}
             <h4>
               Uploaded on:{' '}
               {video.snippet.publishTime
@@ -68,7 +71,7 @@ class Home extends Component {
           </div>
         </div>
       );
-    });
+              });
     return (
       <div className='container'>
         <SearchBar
@@ -76,25 +79,15 @@ class Home extends Component {
           handleChange={this.handleChange}
           searchInput={this.state.searchInput}
         />
-        {!searchedVideos.length ? (
-          <h4
-            style={{
-              color: 'white',
-              fontSize: 20,
-              textAlign: 'center',
-              background: 'grey',
-              width: '40rem',
-              padding: '1rem',
-              margin: '0 auto',
-            }}
-          >
-            No Search Results Yet! Please submit a search above
-          </h4>
-        ) : (
-          ''
-        )}
-        {results}
-        {/* <VideoList searchedVideos={searchedVideos} /> */}
+        <section className='content-box'>
+          {!searchedVideos.length ? (
+            <h4 className='submit-bar'>
+                 No Search Results Yet! Please submit a search above
+            </h4>
+           ) : (
+          <ul className='all-content'> {results} </ul> 
+          )}
+        </section>
       </div>
     );
   }

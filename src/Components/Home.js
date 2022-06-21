@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './SearchBar.css';
-import { decode } from 'html-entities';
 
-import SearchBar from './SearchBar.js';
 import Card from 'react-bootstrap/Card';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
+
+import './Home.css'
+import SearchBar from './SearchBar.js';
+import { decode } from 'html-entities';
+
 
 class Home extends Component {
   constructor() {
@@ -18,7 +21,12 @@ class Home extends Component {
 
   fetchData = (input) => {
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${input}&regionCode=US&key=${process.env.REACT_APP_API_KEY}`
+
+
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=9&q=${input}&key=${process.env.REACT_APP_API_KEY}`
+
+
+
     )
       .then((res) => {
         return res.json();
@@ -53,9 +61,12 @@ class Home extends Component {
   render() {
     const { searchedVideos } = this.state;
     let results = searchedVideos.map((video) => {
+      // < key={video.id.videoId} video={video} />
+    
       return (
         <>
-          <div className='grid-display' key={video.etag}>
+//           <div className='grid-display' key={video.etag}>
+        <div className='home-video' >
             <Card
               className='text-center'
               style={{ width: '18rem', margin: '2rem 0rem' }}
@@ -92,6 +103,9 @@ class Home extends Component {
               </Card.Body>
             </Card>
             {/* <br /> */}
+
+        
+
           </div>
         </>
         // <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
@@ -112,7 +126,7 @@ class Home extends Component {
         //   </div>
         // </Link>
       );
-    });
+              });
     return (
       <div className='container'>
         <SearchBar
@@ -121,6 +135,8 @@ class Home extends Component {
           searchInput={this.state.searchInput}
           // selectMaxResults={this.selectMaxResults}
         />
+
+<section className='content-box'>
         {!searchedVideos.length ? (
           <h4
             className='text-md-center'
@@ -139,8 +155,12 @@ class Home extends Component {
         ) : (
           ''
         )}
-        {results}
+       <ul className='all-content'> {results} </ul> 
         {/* <VideoList searchedVideos={searchedVideos} />  */}
+
+        
+        </section>
+
       </div>
     );
   }

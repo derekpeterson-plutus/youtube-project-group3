@@ -2,6 +2,7 @@ import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
 import { decode } from 'html-entities';
 
+
 class VideoList extends Component {
   render() {
     const { searchedVideos } = this.props;
@@ -10,16 +11,15 @@ class VideoList extends Component {
       return (
         <div>
           <Link to={`/videos/${video.id.videoId}`}>
-            <h4>{ decode(video.snippet.title)}</h4>
-
+            <h4>Title: {decode(video.snippet.title)}</h4>
             <img
               src={video.snippet.thumbnails.medium.url}
               alt={decode(video.snippet.title)}
             />
           </Link>
-          <p>{  decode(video.snippet.description)}</p>
+          <h4>Description: {decode(video.snippet.description)}</h4>
           <div>
-            {/* <h4>{  video.snippet.regionCode}</h4> */}
+            <h4>RegionCode: {video.snippet.regionCode}</h4>
             <h4>
               Uploaded on:{' '}
               {video.snippet.publishTime
@@ -33,5 +33,6 @@ class VideoList extends Component {
     return { results };
   }
 }
+
 
 export default VideoList;

@@ -1,9 +1,12 @@
 import YouTube from 'react-youtube';
 import React, { Component } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import CommentSection from './CommentSection.js';
+
 import './VideoDisplay.css';
 import { Card, Button, Container, Col } from 'react-bootstrap';
+
+import CommentSection from './comments/CommentSection.js';
+
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -15,6 +18,7 @@ class VideoDisplay extends Component {
   };
 
   render() {
+
     const { id, vidtitle } = this.props.params;
 
     return (
@@ -56,6 +60,7 @@ class VideoDisplay extends Component {
             Search New Videos
           </Link>
         </section>*/}
+
 
         <section>
           <CommentSection />

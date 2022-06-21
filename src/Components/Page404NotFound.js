@@ -4,6 +4,7 @@ import './Page404NotFound.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+
 class Page404NotFound extends Component {
   constructor() {
     super();

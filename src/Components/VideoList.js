@@ -2,6 +2,7 @@ import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
 import { decode } from 'html-entities';
 
+
 class VideoList extends Component {
   render() {
     const { searchedVideos } = this.props;
@@ -32,5 +33,6 @@ class VideoList extends Component {
     return { results };
   }
 }
+
 
 export default VideoList;

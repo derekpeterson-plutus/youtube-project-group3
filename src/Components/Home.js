@@ -16,7 +16,9 @@ class Home extends Component {
 
   fetchData = (input) => {
     fetch(
+
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=9&q=${input}&key=${process.env.REACT_APP_API_KEY}`
+
     )
       .then((res) => {
         return res.json();
@@ -26,7 +28,7 @@ class Home extends Component {
           searchedVideos: [...data.items],
         });
       })
-      .then((err) => {
+      .catch((err) => {
         console.log(err);
       });
   };

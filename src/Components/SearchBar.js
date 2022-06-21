@@ -1,12 +1,41 @@
 import { React, Component } from 'react';
 import './SearchBar.css';
-
+import { Form, Button, InputGroup } from 'react-bootstrap';
 class SearchBar extends Component {
   render() {
     const { searchInput, handleChange, handleSubmit } = this.props;
+
     return (
       <div className='container'>
-        <form onSubmit={(event) => handleSubmit(event)}>
+        <div className='wrapper'>
+          <Form
+            onSubmit={(event) => handleSubmit(event)}
+            // id='searchbox'
+          >
+            <Form.Group className='mb-3'>
+              <InputGroup>
+                <Form.Label></Form.Label>
+                <Form.Control
+                  type='text'
+                  // id='searchbar'
+                  placeholder='Search here....'
+                  name='searchbar'
+                  value={searchInput}
+                  onChange={handleChange}
+                />
+
+                <Button
+                  variant='danger'
+                  className='btn btn-outline-danger my-2 my-sm-0'
+                  type='submit'
+                  style={{ color: 'white' }}
+                >
+                  Search
+                </Button>
+              </InputGroup>
+            </Form.Group>
+          </Form>
+          {/* <form onSubmit={(event) => handleSubmit(event)}>
           <label>
             <div className='wrapper'>
               <input
@@ -14,7 +43,7 @@ class SearchBar extends Component {
                 id='searchbar'
                 placeholder='Search here'
                 style={{
-                  maxWidth: '90rem',
+                  maxWidth: '150rem',
                   width: '100%',
                 }}
                 size='50'
@@ -22,10 +51,11 @@ class SearchBar extends Component {
                 value={searchInput}
                 onChange={handleChange}
               />
-              <button>Search</button>
+              <button className='button'>Search</button>
             </div>
           </label>
-        </form>
+        </form> */}
+        </div>
       </div>
     );
   }

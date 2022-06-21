@@ -59,6 +59,12 @@ class CommentSection extends Component {
     );
   }
   render() {
+
+    const { commentsList } = this.state;
+
+    return (
+      <div>
+
     const { commentsList, editing } = this.state;
     const { videoId } = this.props;
     return (
@@ -85,6 +91,7 @@ class CommentSection extends Component {
           updateComments={this.updateComments}
           deleteComments={this.deleteComments}
         />
+
       </div>
     );
   }

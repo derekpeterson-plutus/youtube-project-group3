@@ -47,6 +47,7 @@ class CommentFeed extends Component {
         {/* </div> */}
       </section>
     );
+
   }
 }
 // export default withParams(CommentFeed);

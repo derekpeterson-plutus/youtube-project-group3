@@ -1,7 +1,7 @@
 import { React, Component } from 'react';
 import { Container, Col } from 'react-bootstrap';
 // import EditComments from './EditComments.js';
-import ShowComments from './ShowComments.js';
+import ShowComments from '../ShowComments.js';
 // import { useParams } from 'react-router-dom';
 // function withParams(Component) {
 //   return (props) => <Component {...props} params={useParams()} />;
@@ -47,7 +47,6 @@ class CommentFeed extends Component {
         {/* </div> */}
       </section>
     );
-
   }
 }
 // export default withParams(CommentFeed);

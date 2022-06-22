@@ -1,10 +1,8 @@
 import YouTube from 'react-youtube';
 import React, { Component } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
 import './VideoDisplay.css';
 import { Card, Button, Container, Col } from 'react-bootstrap';
-
 import CommentSection from './comments/CommentSection.js';
 
 

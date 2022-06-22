@@ -65,8 +65,8 @@ class Home extends Component {
     
       return (
         <>
-//           <div className='grid-display' key={video.etag}>
-        <div className='home-video' >
+ {/* //           <div className='grid-display' key={video.etag}>  */}
+        <div className='home-video' key={video.etag}> 
             <Card
               className='text-center'
               style={{ width: '18rem', margin: '2rem 0rem' }}
@@ -103,31 +103,28 @@ class Home extends Component {
               </Card.Body>
             </Card>
             {/* <br /> */}
-
-        
-
           </div>
         </>
-        // <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
-        //   <h4>{video.snippet.title}</h4>
-        //   <img
-        //     src={video.snippet.thumbnails.medium.url}
-        //     alt={video.snippet.title}
-        //   />
-        //   <h4>{video.snippet.description}</h4>
-        //   <div>
-        //     <h4>{video.snippet.regionCode}</h4>
-        //     <h4>
-        //       Uploaded on:{' '}
-        //       {video.snippet.publishTime
-        //         ? video.snippet.publishTime.slice(0, 10)
-        //         : null}
-        //     </h4>
-        //   </div>
-        // </Link>
-      );
-              });
-    return (
+        //  <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}>
+        // //   <h4>{video.snippet.title}</h4>
+        // //   <img
+        // //     src={video.snippet.thumbnails.medium.url}
+        // //     alt={video.snippet.title}
+        // //   />
+        // //   <h4>{video.snippet.description}</h4>
+        // //   <div>
+        // //     <h4>{video.snippet.regionCode}</h4>
+        // //     <h4>
+        // //       Uploaded on:{' '}
+        // //       {video.snippet.publishTime
+        // //         ? video.snippet.publishTime.slice(0, 10)
+        // //         : null}
+        // //     </h4>
+        // //   </div>
+        // // </Link> 
+      )
+               });
+     return (
       <div className='container'>
         <SearchBar
           handleSubmit={this.handleSubmit}
@@ -136,7 +133,7 @@ class Home extends Component {
           // selectMaxResults={this.selectMaxResults}
         />
 
-<section className='content-box'>
+      <section className='content-box'>
         {!searchedVideos.length ? (
           <h4
             className='text-md-center'
@@ -157,8 +154,6 @@ class Home extends Component {
         )}
        <ul className='all-content'> {results} </ul> 
         {/* <VideoList searchedVideos={searchedVideos} />  */}
-
-        
         </section>
 
       </div>

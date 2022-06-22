@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import VideoDisplay from './Components/VideoDisplay.js';
+import ErrorPage from './Components/ErrorPAge.js';
 import NavBar from './Components/NavBar.js';
 import About from './Components/About.js';
 import Page404NotFound from './Components/Page404NotFound.js';
@@ -21,6 +22,7 @@ class App extends React.Component {
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Page404NotFound />} />
             <Route path='/videos/:id' element={<VideoDisplay />} />
+            <Route path='/:notfound' element={<ErrorPage />} />
           </Routes>
         </header>
       </div>

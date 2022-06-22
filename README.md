@@ -74,4 +74,8 @@ https://trello.com/b/zUSyUuJU/youtube-project
 
 Members: Lakisha T., Meera R., Derek P.
 
-Netlify link: https://dlm-youtube.netlify.app
+Netlify link: https://dlm-youtube.netlify.app (this link is not working properly, please use another link below)
+
+New Netlify link here: https://scintillating-bublanina-a0827e.netlify.app/ 
+
+

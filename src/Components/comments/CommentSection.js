@@ -1,7 +1,7 @@
 import { React, Component } from 'react';
 import CommentForm from './CommentForm.js';
 import CommentFeed from './CommentFeed.js';
-import EditComments from './EditComments.js';
+import EditComments from '../EditComments.js';
 class CommentSection extends Component {
   constructor() {
     super();
@@ -59,12 +59,6 @@ class CommentSection extends Component {
     );
   }
   render() {
-
-    const { commentsList } = this.state;
-
-    return (
-      <div>
-
     const { commentsList, editing } = this.state;
     const { videoId } = this.props;
     return (
@@ -86,12 +80,12 @@ class CommentSection extends Component {
             commentsList={commentsList}
           />
         )}
+
         <CommentFeed
           commentsList={commentsList}
           updateComments={this.updateComments}
           deleteComments={this.deleteComments}
         />
-
       </div>
     );
   }

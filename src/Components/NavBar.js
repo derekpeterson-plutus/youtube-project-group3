@@ -1,5 +1,6 @@
 import { React, Component } from 'react';
 import { Link } from 'react-router-dom';
+import DarkMode from './DarkMode.js';
 import './NavBar.css';
 import youtube_logo from '../assets/yt_logo_rgb_dark.png';
 import { Nav, Navbar } from 'react-bootstrap';
@@ -30,7 +31,11 @@ class NavBar extends Component {
                 />
               </Navbar.Brand>
               {/* </LinkContainer> */}
+              <Navbar.Brand>
+                <DarkMode />
+              </Navbar.Brand>
               <Navbar.Toggle />
+
               <Navbar.Collapse className='justify-content-end'>
                 <Nav activeKey={window.location.pathname}>
                   <LinkContainer to='/'>

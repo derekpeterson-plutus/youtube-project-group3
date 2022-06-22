@@ -21,7 +21,7 @@ class VideoDisplay extends Component {
 
   componentDidMount() {
     fetch(
-      `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=YOUR_API_KEY={process.env.REACT_APP_API_KEY}
+      `https://www.googleapis.com/youtube/v3/videos?id=${this.props.videoId}&key=YOUR_API_KEY={process.env.REACT_APP_API_KEY}
   &part=snippet,status`
     )
       .then((res) => {
